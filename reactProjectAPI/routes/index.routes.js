@@ -4,8 +4,9 @@ const User = require('../models/User.model')
 router.get("/users", (req, res, next) => {
   console.log(req)
   User.find()
-    .then(data=>console.log(data))
-  res.json("All good in here");
+    .then(data=>{
+      res.json(data)
+      console.log(data)})
 });
 
 router.post('/users', (req,res,next)=>{
@@ -18,6 +19,16 @@ router.post('/users', (req,res,next)=>{
       console.log("new user created")
       console.log(newUser)
     }) 
+})
+
+router.delete('/users/:userId', (req,res,next)=>{
+  const { userId } = req.params
+  console.log(userId)
+  User.findByIdAndDelete(userId)
+    .then(data=>{
+      console.log("user deleted")
+      console.log(data)
+    })
 })
 
 module.exports = router;
