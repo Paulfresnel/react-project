@@ -19,3 +19,12 @@ code {
   padding: 15px;
   border: 1px blue solid;
 }
+
+.carousel-image{
+}
+
+.carousel-main{
+  margin: 0 auto;
+  width: 75%;
+  height: 500px;
+}

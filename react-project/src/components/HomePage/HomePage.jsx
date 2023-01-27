@@ -1,5 +1,6 @@
 import { useState } from "react"
 import axios from "axios"
+import { Link } from "react-router-dom"
 
 function HomePage(){
     const [username, setUsername] = useState("")
@@ -18,6 +19,9 @@ const createNewUser = (event)=>{
 
     return(
         <div>
+        <Link to={"/souvenirs/create"}>
+        <button>Create a Souvenir</button>
+        </Link>
         <h1>Create a New User:</h1>
             <form onSubmit={(e)=>createNewUser(e)}>
             <label>Username:</label>
