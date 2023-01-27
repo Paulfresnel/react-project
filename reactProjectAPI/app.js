@@ -18,6 +18,9 @@ require("./config")(app);
 const indexRoutes = require("./routes/index.routes");
 app.use("/api", indexRoutes);
 
+const imagesRoutes = require('./routes/images.routes'); // <== has to be added
+app.use('/api', imagesRoutes);
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 
