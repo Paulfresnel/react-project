@@ -13,7 +13,7 @@ const errorHandler = (err) => {
 };
 
 const getImages = () => {
-  return api.get("/images")
+  return api.get("/souvenirs")
     .then((res) => res.data)
     .catch(errorHandler);
 };
@@ -25,7 +25,7 @@ const uploadImage = (file) => {
 };
 
 const createImage = (newImage) => {
-  return api.post("/images", newImage)
+  return api.post("/souvenirs", newImage)
     .then(res => res.data)
     .catch(errorHandler);
 };

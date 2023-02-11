@@ -4,16 +4,18 @@ const express = require("express");
 const router = express.Router();
 
 // **** require Movie model in order to use it ****
-const Image = require("../models/Image.model");
+const Souvenir = require("../models/Souvenir.model");
 
 // ********* require fileUploader in order to use it *********
 const fileUploader = require("../config/cloudinary.config");
 
 
 // GET "/api/movies" => Route to list all available movies
-router.get("/images", (req, res, next) => {
-  Image.find()
-    .then(moviesFromDB => res.status(200).json(moviesFromDB))
+router.get("/souvenirs", (req, res, next) => {
+  Souvenir.find()
+    .then(souvenirData => {
+      console.log(souvenirData) 
+      res.status(200).json(souvenirData)})
     .catch(err => next(err));
 });
 
@@ -33,17 +35,26 @@ router.post("/upload", fileUploader.single("imageUrl"), (req, res, next) => {
 });
 
 // POST '/api/movies' => for saving a new movie in the database
-router.post('/images', (req, res, next) => {
+router.post('/souvenirs', (req, res, next) => {
   // console.log('body: ', req.body); ==> here we can see that all
   // the fields have the same names as the ones in the model so we can simply pass
   // req.body to the .create() method
 
-  Image.create(req.body)
+  Souvenir.create(req.body)
     .then(createdImage => {
+      console.log("souvenir created")
       // console.log('Created new movie: ', createdImage);
-      res.status(200).json(createdImage);
+      res.status(200).json({souvenir: createdImage, message:"Souvenir Created"});
     })
     .catch(err => next(err));
 });
+
+router.delete('/souvenirs/:souvenirId', (req,res)=>{
+  const {souvenirId} = req.params
+  Souvenir.findByIdAndDelete(souvenirId)
+    .then(response=>{
+      res.json({message: "Entry deleted"})
+    })
+})
 
 module.exports = router;

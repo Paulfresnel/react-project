@@ -1,11 +1,13 @@
 import service from "../../api/service"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import './AddSouvenir.css'
 
 function AddSouvenir(){
     const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
     const [location, setLocation] = useState("");
+    const [souvenir, setSouvenir] = useState({title:"",description:"",location:'', image:""})
 
   const [imageUrl, setImageUrl] = useState("");
   const navigate = useNavigate()
@@ -26,14 +28,21 @@ function AddSouvenir(){
         console.log(response.fileUrl)
         // response carries "fileUrl" which we can use to update the state
         setImageUrl(response.fileUrl);
+        setSouvenir({...souvenir, image:response.fileUrl})
       })
       .catch(err => console.log("Error while uploading the file: ", err));
   };
 
+  const handleChange = (e)=>{
+    let name = e.target.name
+    let value = e.target.value
+    setSouvenir({...souvenir, [name]:value})
+  }
+
   const handleSubmit = (e)=>{
     e.preventDefault()
     console.log(imageUrl)
-    service.createImage({title,description,location,imageUrl})
+    service.createImage(souvenir)
         .then(response=>{
             console.log("image added:" + response)
             setTitle('')
@@ -47,18 +56,21 @@ function AddSouvenir(){
 
 
     return(
-        <div>
+        <div className="souvenir-form">
             <form onSubmit={(e)=>handleSubmit(e)}>
                 <label>Title:</label>
-                <input onChange={(e)=>setTitle(e.target.value)} type="text" name="title"></input>
+                <input onChange={(e)=>handleChange(e)} type="text" value={souvenir.title} name="title"></input>
                 <label>Description:</label>
-                <input onChange={(e)=>setDescription(e.target.value)} type="text" name="description"></input>
+                <input onChange={(e)=>handleChange(e)} type="text" value={souvenir.description} name="description"></input>
                 <label>Location:</label>
-                <input onChange={(e)=>setLocation(e.target.value)} type="text" name="location"></input>
+                <input onChange={(e)=>handleChange(e)} type="text" value={souvenir.location} name="location"></input>
                 <label>Image URL:</label>
-                <input onChange={(e)=>handleFileUpload(e)} type="file" name="title"></input>
+                <input onChange={(e)=>handleChange(e)} type='text' value={souvenir.image} ></input>
+                <input onChange={(e)=>handleFileUpload(e)} type="file" name="image"></input>
                 <button type="submit">Save New Souvenir</button>
             </form>
+            <p style={{marginTop:"15px"}}>Here's the file you are uploading:</p>
+            <img className="image-file" style={{width:"35rem", marginTop:"20px"}} src={souvenir.image}/>
         </div>
     )
 }

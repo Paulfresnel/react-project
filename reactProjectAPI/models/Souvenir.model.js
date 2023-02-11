@@ -3,16 +3,16 @@
 const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 
-const imageSchema = new Schema(
+const souvenirSchema = new Schema(
   {
     title: String,
     description: String,
     location:String,
-    imageUrl: String
+    image: String
   },
   {
     timestamps: true
   }
 );
 
-module.exports = model("Image", imageSchema);
+module.exports = model("Souvenir", souvenirSchema);
