@@ -35,11 +35,11 @@ function SouvenirList(){
         <div className='main-container-carousel' >
 
         <div id="carouselExampleCaptions" className="carousel slide carousel-fade" data-bs-ride="carousel">
-        <div class="carousel-indicators">
+        <div className="carousel-indicators">
         {souvenirs.map((souvenir,index)=>{
            return <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to={index} class="active" aria-current="true" aria-label={"Slide" +{index}}></button>
         })}
-  </div>
+        </div>
   <div className="carousel-inner">
     
      

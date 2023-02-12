@@ -5,6 +5,7 @@ const router = express.Router();
 
 // **** require Movie model in order to use it ****
 const Souvenir = require("../models/Souvenir.model");
+const Album = require('../models/Album.model')
 
 // ********* require fileUploader in order to use it *********
 const fileUploader = require("../config/cloudinary.config");
@@ -54,6 +55,20 @@ router.delete('/souvenirs/:souvenirId', (req,res)=>{
   Souvenir.findByIdAndDelete(souvenirId)
     .then(response=>{
       res.json({message: "Entry deleted"})
+    })
+})
+
+router.post('/albums', (req,res)=>{
+  console.log(req.body)
+  const {title, description, image, tags} = req.body
+  Album.create({title,description,image,tags})
+    .then(albumCreated=>{
+      console.log(albumCreated)
+      res.json({album:albumCreated.data})
+    })
+    .catch(err=>{
+      console.log(err)
+      res.json({message: {err}})
     })
 })
 

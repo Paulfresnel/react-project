@@ -3,3 +3,10 @@
      width:55rem;
     margin-top: 55px;
 }
+
+.carousel-indicators{
+    width: 30%;
+    margin: 0 auto;
+    background-color: rgba(41, 38, 38, 0.64);
+    margin-top: 25px;
+}

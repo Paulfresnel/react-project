@@ -7,6 +7,7 @@ import HomePage from './components/HomePage/HomePage';
 import Header from './components/Header/Header';
 import AddSouvenir from './components/AddSouvenir/AddSouvenir';
 import SouvenirList from './components/SouvenirList/SouvenirList';
+import CreateAlbum from './components/CreatAlbum/CreateAlbum';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path={"/list"} element={<APICall/>}/>
       <Route path={"/souvenirs"} element={<SouvenirList/>}/>
       <Route path={"/souvenirs/create"} element={<AddSouvenir/>}/>
+      <Route path={"/albums/create"} element={<CreateAlbum/>}/>
     </Routes>
     </div>
   );
