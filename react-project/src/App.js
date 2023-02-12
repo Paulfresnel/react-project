@@ -19,6 +19,7 @@ function App() {
       <Route path={"/souvenirs"} element={<SouvenirList/>}/>
       <Route path={"/souvenirs/create"} element={<AddSouvenir/>}/>
       <Route path={"/albums/create"} element={<CreateAlbum/>}/>
+      <Route path={"/albums/:albumId"} element={<EditAlbum/>}/>
     </Routes>
     </div>
   );

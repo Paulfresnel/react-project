@@ -1,5 +1,10 @@
 
 .album-form{
-    width: 35%;
+    width: 15rem;
     margin:0 auto;
+}
+
+.image-album{
+    margin: 15px 0px 15px 0px;
+    border: 1px black solid;
 }

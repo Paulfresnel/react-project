@@ -30,8 +30,14 @@ const createImage = (newImage) => {
     .catch(errorHandler);
 };
 
+const createAlbum = (newAlbum)=>{
+  return api.post("/albums", newAlbum)
+    .catch(errorHandler);
+}
+
 export default {
   getImages,
   uploadImage,
-  createImage
+  createImage,
+  createAlbum
 };

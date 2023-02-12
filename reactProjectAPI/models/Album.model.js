@@ -19,6 +19,10 @@ const albumSchema = new Schema(
         type: String,
         required: true
     },
+    isPublic:{
+        type: Boolean,
+        default: false
+    },
     souvenirs: [{type: Schema.Types.ObjectId, ref: "Souvenir"}],
     dateCreated:{
         type: String,

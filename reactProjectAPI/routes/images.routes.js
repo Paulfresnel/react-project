@@ -58,10 +58,12 @@ router.delete('/souvenirs/:souvenirId', (req,res)=>{
     })
 })
 
+// ALBUMS Route
+
 router.post('/albums', (req,res)=>{
   console.log(req.body)
-  const {title, description, image, tags} = req.body
-  Album.create({title,description,image,tags})
+  const {title, description, image, isPublic} = req.body
+  Album.create({title,description,image, isPublic})
     .then(albumCreated=>{
       console.log(albumCreated)
       res.json({album:albumCreated.data})
