@@ -1,5 +1,3 @@
-import logo from './logo.svg';
-
 import './App.css';
 import APICall from './components/APICall';
 import { Routes, Route} from "react-router-dom"
@@ -8,6 +6,8 @@ import Header from './components/Header/Header';
 import AddSouvenir from './components/AddSouvenir/AddSouvenir';
 import SouvenirList from './components/SouvenirList/SouvenirList';
 import CreateAlbum from './components/CreatAlbum/CreateAlbum';
+import SignUp from './components/SignUp/SignUp';
+
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
     <Header/>
     <Routes>
       <Route path={"/"} element={<HomePage/>}/>
+      <Route path={"/signup"} element={<SignUp/>}/>
       <Route path={"/list"} element={<APICall/>}/>
       <Route path={"/souvenirs"} element={<SouvenirList/>}/>
       <Route path={"/souvenirs/create"} element={<AddSouvenir/>}/>

@@ -18,7 +18,20 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: [true, 'Password is required.']
-    }
+    },
+    image:{
+     type: String,
+     required: false
+     },
+     albumsCreated: [
+     {type: Schema.Types.ObjectId, ref: 'Album'}
+     ],
+     followers:[
+     {type: Schema.Types.ObjectId, ref: 'User'}
+     ],
+     following: [
+     {type: Schema.Types.ObjectId, ref: 'User'}
+     ]
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`    

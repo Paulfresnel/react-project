@@ -8,6 +8,12 @@ const api = axios.create({
   // withCredentials: true // => you might need this option if using cookies and sessions
 });
 
+const auth = axios.create({
+  // make sure you use PORT = 5005 (the port where our server is running)
+  baseURL: "http://localhost:5005/auth"
+  // withCredentials: true // => you might need this option if using cookies and sessions
+});
+
 const errorHandler = (err) => {
   throw err;
 };
@@ -35,9 +41,15 @@ const createAlbum = (newAlbum)=>{
     .catch(errorHandler);
 }
 
+const createUser = (newUser)=>{
+  return auth.post('/users', newUser)
+    .catch(errorHandler)
+}
+
 export default {
   getImages,
   uploadImage,
   createImage,
-  createAlbum
+  createAlbum,
+  createUser
 };
