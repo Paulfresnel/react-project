@@ -70,7 +70,7 @@ function AddSouvenir(){
                 <button type="submit">Save New Souvenir</button>
             </form>
             <p style={{marginTop:"15px"}}>Here's the file you are uploading:</p>
-            <img className="image-file" style={{width:"35rem", marginTop:"20px"}} src={souvenir.image}/>
+            <img className="image-file" style={{width:"20rem", marginTop:"20px"}} src={souvenir.image}/>
         </div>
     )
 }

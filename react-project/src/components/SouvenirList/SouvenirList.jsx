@@ -45,7 +45,7 @@ function SouvenirList(){
      
      {!isLoading && <div> {souvenirs.map((souvenir)=>{
     return <div className="carousel-item active">
-        <img loading='lazy' src={souvenir.image} className="d-block w-100" alt="..."/>
+        <img loading='lazy' src={souvenir.image} className="d-block w-100 h-100" alt="..."/>
         <div className="carousel-caption d-none d-md-block">
             <h5>{souvenir.title}</h5>
             <p>{souvenir.description}</p>

@@ -66,7 +66,7 @@ router.post('/albums', (req,res)=>{
   Album.create({title,description,image, isPublic})
     .then(albumCreated=>{
       console.log(albumCreated)
-      res.json({album:albumCreated.data})
+      res.json({album:albumCreated})
     })
     .catch(err=>{
       console.log(err)

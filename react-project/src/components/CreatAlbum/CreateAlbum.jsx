@@ -25,8 +25,8 @@ function CreateAlbum(){
       .createAlbum(album)
       .then(response=>{
         console.log("response")
-        console.log(response.data)
-        const {album} = response.data
+        console.log(response)
+        const {album} = response
         navigate(`/albums/${album._id}`)
       })
       .catch(err=>console.log(err))

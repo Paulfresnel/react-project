@@ -38,6 +38,7 @@ const createImage = (newImage) => {
 
 const createAlbum = (newAlbum)=>{
   return api.post("/albums", newAlbum)
+    .then(res => res.data)
     .catch(errorHandler);
 }
 
